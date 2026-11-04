@@ -232,8 +232,7 @@ else:
     fig = go.Figure()
 
     # 테스트 데이터 점 (실제 뇌졸중 여부로 색을 나눈다)
-    hover = f"{KOR[x_col]}: %{{x}}
-{KOR[y_col]}: %{{y}}"
+    hover = f"{KOR[x_col]}: %{{x}}<br>{KOR[y_col]}: %{{y}}"
     for label, name, color, size, opacity in [
         (0, "실제 뇌졸중 아님", C_NO, 6, 0.5),
         (1, "실제 뇌졸중", C_YES, 9, 0.9),
@@ -413,4 +412,3 @@ if len(selected) >= 3:
             st.write(f"세 축이 아닌 속성은 테스트 데이터의 중앙값에 세워 두고 계산했어요: {fixed3}")
         for note in notes3:
             st.write(note)
-  
