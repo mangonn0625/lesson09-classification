@@ -138,4 +138,11 @@ with tab3:
         input_encoded = input_encoded.reindex(columns=X.columns, fill_value=0)
         
         pred = model.predict(input_encoded)[0]
-        proba = model.predict_proba(input_
+        proba = model.predict_proba(input_encoded)[0]
+        
+        st.divider()
+        if pred == 1:
+            st.error(f"⚠️ **배송 지연이 예상됩니다!** (지연 확률: {proba[1]*100:.1f}%)")
+            st.write("할인율이 높거나 무게/배송 수단 등의 영향으로 예정일보다 늦게 도착할 가능성이 높습니다.")
+        else:
+            st.success(f"✅ **정시 도착(정상 배송)이 예상됩니다.** (정상 도착 확률: {proba[0]*100:.1f}%)")
